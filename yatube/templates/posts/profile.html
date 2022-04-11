@@ -20,7 +20,7 @@
       </ul>
       <p>{{ post.text|truncatewords:50 }}</p>
 <!-- добавил ограничение, я думаю лучше будет, а если нужен полный пост, то смотрим по ссылки ниже -->
-      <a href="{% url 'posts:post_detail' post_id=post.pk %}">Подробная информация </a>
+      <a href="{% url 'posts:post_detail' post.id %}">Подробная информация </a>
     </article>
   {% if not forloop.last %}<hr>{% endif %}
   {% endfor %}

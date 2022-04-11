@@ -25,14 +25,14 @@
               Всего постов автора:  <span >{{ count_post }}</span>
         </li>
         <li class="list-group-item">
-          <a href="{% url 'posts:profile' username=post.author %}">Все посты пользователя</a>
+          <a href="{% url 'posts:profile' post.author.username %}">Все посты пользователя</a>
         </li>
       </ul>
     </aside>
     <article class="col-12 col-md-9">
       <p>{{ post.text }}</p>
-      {% if user.is_authenticated %}
-      <a class="btn btn-primary" href="{% url 'posts:post_edit' post_id=post.pk %}">Редактировать запись</a>
+      {% if user == post.author %}
+      <a class="btn btn-primary" href="{% url 'posts:post_edit' post.id %}">Редактировать запись</a>
       {% endif %}
     </article>
   </div>
