@@ -2,8 +2,6 @@ from django.contrib import admin
 
 from .models import Group, Post
 
-admin.site.register(Group)
-
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
@@ -12,3 +10,10 @@ class PostAdmin(admin.ModelAdmin):
     list_editable = ('group',)
     list_filter = ('pub_date',)
     empty_value_display = '-пусто-'
+
+
+@admin.register(Group)
+class GroupAdmin(admin.ModelAdmin):
+    list_display = ('title', 'slug')
+    list_display_links = ('title', 'slug')
+    prepopulated_fields = {"slug": ("title",)}
