@@ -8,23 +8,7 @@
   <h1>Все посты пользователя {{ author.get_full_name }}</h1>
   <h3>Всего постов: {{ count_post }}</h3>
   {% for post in page_obj %}
-    <article>
-      <ul>
-        <li>
-          Автор: {{ author.get_full_name }}
-          <a href="{% url 'posts:profile' post.author.username %}">Все посты пользователя</a>
-        </li>
-        <li>
-          Дата публикации: {{ post.pub_date|date:"d E Y" }}
-        </li>
-      </ul>
-      <p>{{ post.text|truncatewords:50 }}</p>
-<!-- добавил ограничение, я думаю лучше будет, а если нужен полный пост, то смотрим по ссылки ниже -->
-      <a href="{% url 'posts:post_detail' post.id %}">Подробная информация </a>
-    </article>
-  {% if not forloop.last %}<hr>{% endif %}
+      {% include 'posts/includes/post_for_list.html' %}
+    {% if not forloop.last %}<hr>{% endif %}
   {% endfor %}
-  {% if post.group %}
-    <a href="{% url 'posts:group_list' post.group.slug %}">Все записи группы</a>
-  {% endif %}
 {% endblock %}
