@@ -9,7 +9,5 @@ class PostForm(forms.ModelForm):
         self.fields['group'].empty_label = "Группа не выбрана"
 
     class Meta:
-        # На основе какой модели создаётся класс формы
         model = Post
-        # Укажем, какие поля будут в форме
         fields = ('text', 'group')
