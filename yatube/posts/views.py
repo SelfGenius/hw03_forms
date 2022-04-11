@@ -3,7 +3,7 @@ from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, render, redirect
 from django.utils import timezone
 
-from .form import PostForm
+from .forms import PostForm
 from .models import Group, Post, User
 
 
