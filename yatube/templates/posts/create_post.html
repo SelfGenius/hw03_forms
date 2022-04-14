@@ -3,6 +3,7 @@
 {% block title %}Новый пост{% endblock %}
 
 {% block content %}
+{% load user_filters %}
   <main>
     <div class="container py-5">
       <div class="row justify-content-center">
@@ -26,7 +27,7 @@
                           <span class="required text-danger" ></span>
                       </label>
                     <div>
-                      {{ field }}
+                      {{ field|addclass:'form-control' }}
                         <small id="{{ field.id_for_label }}-help" class="form-text text-mut">
                           <p>{{ field.help_text}}</p>
                         </small>
